@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="en" ng-app="myApp">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0 user-scalable=no">
+    <script type="text/javascript" src="js/angular1.4.min.js"></script>
+</head>
+<body>
+<div class="box" ng-controller="myCtrl">
+    <p ng-bind="myText"></p>
+    <input type="text" ng-model="test" ng-blur="count = count + 1" ng-focus="count = count - 1" ng-init="count=1" >
+    <h4>{{count}}</h4>
+    <h4>{{coun}}</h4>
+    <div>
+        {{test}}
+    </div>
+    <div ng-controller="myCtrl">
+        <input type="text" ng-change="myFunc()" ng-model="myValue" />
+        <p>The input field has changed {{count}} times.</p>
+    </div>
+    <p>你喜欢那个？</p>
+    <div ng-init="myVar = 'http://www.runoob.com'">
+        <h6>菜鸟教程</h6>
+        <p>访问 <a ng-href="{{myVar}}">这去</a> 学习!</p>
+    </div>
+    <input type="checkbox" ng-checked="all">萝莉<br>
+    <input type="checkbox" ng-checked="all">少妇<br>
+    <input type="checkbox" ng-checked="all">清纯大学生<br>
+    <input type="checkbox" ng-model="all"> 全选<br>
+    <button ng-disabled="all1">OK</button>
+    <input type="text" ng-disabled="all1">
+    男<input type="radio" ng-disabled="all1" name="12">
+    女<input type="radio" ng-disabled="all1" name="12">
+    禁用表单输入域: <input type="checkbox" ng-model="all1">
+    <br>
+    <button ng-click="coun = coun + 1" ng-init="coun=0">OK</button>
+    <div ng-controller="myCtrl">{{firstName}} {{niubi}} {{lastName}}</div>
+    <input ng-copy="count = count + 1" ng-init="count=0" value="Copy this text" />
+    <input ng-cut="count = count + 1" ng-init="count=1" value="剪切这个文本" />
+</div>
+<script type="text/javascript">
+    var app = angular.module("myApp",[]);
+    app.controller("myCtrl", function($scope) {
+        $scope.myText = "My name is: <h1>John Doe</h1>";
+        $scope.firstName = "王伟";
+        $scope.niubi = "牛逼不";
+        $scope.lastName = "牛逼";
+        $scope.count = 0;
+        $scope.myFunc = function() {
+            $scope.count++;
+        };
+    });
+</script>
+</body>
+</html>
